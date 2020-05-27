@@ -1,5 +1,24 @@
 <ion-app>
-  <ion-menu content-id="menu">Menu</ion-menu>
+  <ion-menu side= "start" content-id="menu" name="Menu">
+    <ion-content>
+            <ion-list>
+              <ion-item>
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>Inbox</ion-label>
+              </ion-item>
+            </ion-list>
+    </ion-content>
+  </ion-menu>
 
   <ion-router-outlet id="menu"></ion-router-outlet>
+  <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Medical Reminder</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    </div>
 </ion-app>
