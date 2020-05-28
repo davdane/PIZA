@@ -6,16 +6,15 @@
     </ion-header>
 
     <ion-content fullscreen>
-      <form onsubmit="processForm(event)">
-        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
           <ion-item>
             <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+            <ion-input placeholder="Enter Input"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required type="text" oninput="handleLastNameValue(event)"></ion-input>
+            <ion-input placeholder="Enter Input"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -41,6 +40,6 @@
         <div class="ion-padding">
           <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
         </div>
-      </form>
+
     </ion-content>
 </ion-app>
