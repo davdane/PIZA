@@ -1,11 +1,19 @@
-<form (ngSubmit)="sign()">
+<ion-content [fullscreen]="true">
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- form (ngSubmit)="sign()"-->
      <ion-item>
        <ion-label>Username</ion-label>
-       <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
+       <ion-input type="text"  name="username"></ion-input>
      </ion-item>
      <ion-item>
        <ion-label>Password</ion-label>
        <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
      </ion-item>
-     <button ion-button type="submit">Sign In</button>
-   </form>
+     <ion-button type="submit">Login</ion-button>
+   <!--/form-->
+</ion-content>
