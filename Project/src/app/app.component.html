@@ -1,13 +1,21 @@
 <ion-app>
   <ion-menu side= "start" content-id="menu" name="Menu">
     <ion-content>
-            <ion-list>
+          <ion-list>
+            <ion-menu-toggle>
+              <!-- Quando viene aggiunto un profilo, viene inserito qui -->
               <ion-item [routerLink]="['/add-profile']">
                 <ion-icon name="add-circle-outline" slot="start"></ion-icon>
                 <ion-label>Add new profile</ion-label>
               </ion-item>
-            </ion-list>
+            </ion-menu-toggle>
+          </ion-list>
     </ion-content>
+   <ion-footer>
+    <ion-toolbar>
+      <ion-button slot="end" (click)=logoutClicked()><ion-icon name="log-out-outline"></ion-icon> Logout</ion-button>
+    </ion-toolbar>
+   </ion-footer>
   </ion-menu>
 
   <ion-router-outlet id="menu">
