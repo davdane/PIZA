@@ -16,6 +16,12 @@
      </ion-item>
      <ion-button type="submit">Login</ion-button>
    <!--/form-->
-
-
+   <ion-item class="ion-no-border" align-items-center>
+     <ion-title>Login with: </ion-title>
+   </ion-item>
+<ion-item class="ion-no-border" align-items-center>
+       <ion-button size="large"><ion-icon name="logo-google"></ion-icon></ion-button>
+       <ion-button size="large"><ion-icon name="logo-facebook"></ion-icon></ion-button>
+ </ion-item>
+   <ion-button expand="block" type="submit" class="ion-no-margin" size="small" fill="clear" [routerLink]="['/register']">New user? Register here!</ion-button>
 </ion-content>
