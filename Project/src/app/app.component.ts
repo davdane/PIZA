@@ -14,7 +14,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    //public sqlite: SQLite
+    public sqlite: SQLite,
   ) {
     this.initializeApp();
   }
@@ -25,7 +25,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      /*let db = new SQLite();
+      let db = new SQLite();
             db.create({
                 name: "data.db",
                 location: "default"
@@ -39,7 +39,7 @@ export class AppComponent {
                 console.error("Unable to open database", error);
                 });
 
-
+/*
       this.sqlite.create({
         name: 'prova.db',
         location: 'default'
