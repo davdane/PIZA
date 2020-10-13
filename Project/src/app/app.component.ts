@@ -42,7 +42,7 @@ export class AppComponent {
             db.create({
                 name: "data.db",
                 location: "default"
-            }).then(() => {
+            })/*.then(() => {
                 db.executeSql("CREATE TABLE IF NOT EXISTS people (id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, lastname TEXT)", {}).then((data) => {
                     console.log("TABLE CREATED: ", data);
                 }, (error) => {
