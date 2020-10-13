@@ -11,5 +11,8 @@ export class AddProfilePage implements OnInit {
 
   ngOnInit() {
   }
-
+  addProfile (){
+    alert("Profile added!")
+    this.profiles.push("")
+  }
 }

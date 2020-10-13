@@ -5,6 +5,10 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-item *ngFor="let item of profiles">
+    {{item}}
+  </ion-item>
+  
   <div id="container">
     <strong>Are you a new user?</strong>
     <p>Start by adding a new profile!</p>
