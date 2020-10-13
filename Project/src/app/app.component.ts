@@ -14,7 +14,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public sqlite: SQLite,
+    private sqlite: SQLite,
   ) {
     this.initializeApp();
   }
