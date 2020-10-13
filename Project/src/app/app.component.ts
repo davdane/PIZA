@@ -14,7 +14,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public sqlite: SQLite
+    //public sqlite: SQLite
   ) {
     this.initializeApp();
   }
@@ -38,7 +38,7 @@ export class AppComponent {
             }, (error) => {
                 console.error("Unable to open database", error);
                 });
-      
+
 
       this.sqlite.create({
         name: 'prova.db',
