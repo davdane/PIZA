@@ -37,7 +37,7 @@ export class AppComponent {
             }, (error) => {
                 console.error("Unable to open database", error);
                 });
-      */
+      
 
       this.sqlite.create({
         name: 'prova.db',
@@ -56,7 +56,7 @@ export class AppComponent {
           }).catch(e => console.log(e));;
       });
 
-     /*
+
       this.storage = new Storage ();
       this.storage.query ("CREATE TABLE IF NOT EXISTS people (id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, lastname TEXT, )");.then((data) =>{
         console.log("TABLE CREATED: ", data);
