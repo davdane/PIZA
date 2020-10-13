@@ -10,12 +10,12 @@
 
           <ion-item>
             <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input type="text" placeholder="Insert Name"></ion-input>
+            <ion-input type="text" placeholder="Insert Name" ng-model="name"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Surname</ion-label>
-            <ion-input type="text" placeholder="Insert Surname"></ion-input>
+            <ion-input type="text" placeholder="Insert Surname" ng-model="surname"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -35,6 +35,8 @@
 
         </ion-list>
 
-        <ion-button expand="block" type="submit" class="ion-no-margin">Create profile</ion-button>
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addProfile()">
+          Create profile
+        </ion-button>
 
      </ion-content>
