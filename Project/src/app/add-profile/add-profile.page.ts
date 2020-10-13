@@ -13,6 +13,6 @@ export class AddProfilePage implements OnInit {
   }
   addProfile (){
     alert("Profile added!")
-    this.profiles.push("")
+    /*this.profiles.push("")*/
   }
 }
