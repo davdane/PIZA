@@ -51,6 +51,7 @@ export class AppComponent {
             }, (error) => {
                 console.error("Unable to open database", error);
                 });
+   
 
 /*
       this.sqlite.create({
