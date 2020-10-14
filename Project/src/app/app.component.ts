@@ -25,7 +25,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-/*      this.sqlite.create           //funzione default ionic Framework
+      this.sqlite.create           //funzione default ionic Framework
       ({
            name: 'data.db',
            location: 'default'
@@ -36,13 +36,14 @@ export class AppComponent {
            .then(() => console.log('Executed SQL'))
            .catch(e => console.log(e));
      }).catch(e => console.log(e));
-
-*/
+   }).catch(e => console.log(e));
+   }
+/*
       let db = new SQLite();
             db.create({
                 name: "data.db",
                 location: "default"
-            })/*.then(() => {
+            }).then(() => {
                 db.executeSql("CREATE TABLE IF NOT EXISTS people (id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT, lastname TEXT)", {}).then((data) => {
                     console.log("TABLE CREATED: ", data);
                 }, (error) => {
@@ -51,7 +52,7 @@ export class AppComponent {
             }, (error) => {
                 console.error("Unable to open database", error);
                 });
-   
+
 
 /*
       this.sqlite.create({
@@ -80,6 +81,6 @@ export class AppComponent {
       })*/
 
 
-    });
-  }
+
+
 }
