@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProfilePage implements OnInit {
 
-  constructor() { }
+  profiles : Array <string> = []
+
+  constructor() {
+    this.profiles=[]
+  }
 
   ngOnInit() {
   }
   addProfile (){
     alert("Profile added!")
-    /*this.profiles.push("")*/
+    this.profiles.push('')
   }
 }

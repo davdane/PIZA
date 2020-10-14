@@ -10,6 +10,9 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+    profiles : Array <string> = []
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -17,6 +20,7 @@ export class AppComponent {
     private sqlite: SQLite,
   ) {
     this.initializeApp();
+    this.profiles=[]
   }
 
   initializeApp() {
