@@ -28,6 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
 
+  //{
+  //  path: 'developers',
+  //  loadChildren: './pages/developers/developers.module#DevelopersPageModule'
+  //},
+  //{
+  //  path: 'developers/:id',
+  //  loadChildren: './pages/developer/developer.module#DeveloperPageModule'
+  //},
 ];
 
 @NgModule({
