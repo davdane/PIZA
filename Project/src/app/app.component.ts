@@ -9,7 +9,8 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent
+{
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -19,12 +20,13 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  initializeApp() {
+  initializeApp()
+  {
     this.platform.ready().then(() =>
     {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
+/*
       this.sqlite.create           //funzione default ionic Framework
       ({
            name: 'data.db',
@@ -36,8 +38,10 @@ export class AppComponent {
            .then(() => console.log('Executed SQL'))
            .catch(e => console.log(e));
      }).catch(e => console.log(e));
-   }).catch(e => console.log(e));
+  */
+})/*.catch(e => console.log(e))*/;
    }
+ }
 /*
       let db = new SQLite();
             db.create({
@@ -79,8 +83,3 @@ export class AppComponent {
       }, (error) => {
         console.error("Unable to execute sql", error);
       })*/
-
-
-
-
-}
