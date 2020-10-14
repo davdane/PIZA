@@ -1,15 +1,10 @@
 <ion-content [fullscreen]="true">
   <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Medical Reminder</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-item *ngFor="let item of profiles">
-    {{item}}
-  </ion-item>
-  
-  <div id="container">
+  <div *ngIf="profiles[0]==null" else #conditionFalse >
     <strong>Are you a new user?</strong>
     <p>Start by adding a new profile!</p>
   <p>
@@ -20,4 +15,9 @@
     </ion-fab>
   </p>
   </div>
+
+  <ion-item *ngFor="let item of profiles" #conditionFalse>
+    {{item}}
+  </ion-item>
+
 </ion-content>
