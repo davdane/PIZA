@@ -31,15 +31,6 @@ const routes: Routes = [
     loadChildren: () => import('./appoint/appoint.module').then( m => m.AppointPageModule)
   },
 
-
-  //{
-  //  path: 'developers',
-  //  loadChildren: './pages/developers/developers.module#DevelopersPageModule'
-  //},
-  //{
-  //  path: 'developers/:id',
-  //  loadChildren: './pages/developer/developer.module#DeveloperPageModule'
-  //},
 ];
 
 @NgModule({
