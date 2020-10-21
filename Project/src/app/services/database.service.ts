@@ -9,7 +9,7 @@ export class DatabaseService {
 
   addAppoint(idapp, title, description, place, timeapp, profileId )
     {
-     let data = [idapp, title, description, place, timeapp, profileId ];
+     let data = [idappp, title, description, place, timeapp, profileId ];
      return this.database.executeSql('INSERT INTO appointment (idapp, title, description, place, timeapp, profileId ) VALUES (?, ?, ?, ?, ?, ?)', data)
     }
 
