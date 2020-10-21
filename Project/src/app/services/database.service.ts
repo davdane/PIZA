@@ -21,7 +21,7 @@ export class DatabaseService {
 
   selectAppoint(id,profileId)
     {
-      return this.database.executeSql('SELECT title FROM appointment WHERE idapp=?, profileId=?', [idapp,profileId])
+      return this.database.executeSql('SELECT title FROM appointment,profile  WHERE idapp=?, profileId=?', [idapp,profileId])
       let title = [];
     }
 
