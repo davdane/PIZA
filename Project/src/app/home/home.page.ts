@@ -10,7 +10,7 @@ export class HomePage {
   profiles : Array <string> = []
 
   constructor() {
-    this.profiles=[]
+    this.profiles=['An']
   }
 
 }

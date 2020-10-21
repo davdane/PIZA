@@ -16,8 +16,20 @@
   </p>
   </div>
 
-  <ion-item *ngFor="let item of profiles" #conditionFalse>
-    {{item}}
-  </ion-item>
+  <ion-list class="ion-no-margin ion-no-padding" *ngFor="let item of profiles" #conditionFalse>
+    <ion-list-header>
+    <strong>Upcoming appointments:</strong>
+    </ion-list-header>
+    <ion-item>
+          <ion-avatar slot="start">
+            <img src="./assets/icon/favicon.png">
+          </ion-avatar>
+          <ion-label>
+            <h2>12/12/20</h2>
+            <h3>Vaccino</h3>
+            <h4>Antitetanica</h4>
+          </ion-label>
+        </ion-item>
+  </ion-list>
 
 </ion-content>
