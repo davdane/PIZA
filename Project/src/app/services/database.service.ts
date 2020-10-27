@@ -9,32 +9,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 export class DatabaseService {
   private database: SQLiteObject;
 
-/*
-constructor()
-{
-
-}
-constructor(private sqlite: SQLite)
-  {
-        this.sqlite.create
-      ({
-        name: 'database.db',
-        location: 'default'
-      })
-  }
-
-
-constructor(private db: SQLiteObject)
-  {
-        this.db.create
-      ({
-        name: 'database.db',
-        location: 'default'
-      })
-  }
-  */
-
-  constructor( private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
+constructor( private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
   {
 
       this.sqlite.create({
@@ -43,9 +18,18 @@ constructor(private db: SQLiteObject)
       })
       .then((db: SQLiteObject) => {
           this.database = db;
-          //this.seedDatabase();
+          this.seedDatabase();
       });
 
+  }
+
+  seedDatabase()
+ {
+    this.http.get('assets/seed.sql', { responseType: 'text'})
+    .subscribe(sql =>
+    {
+      this.sqlitePorter.importSqlToDb(this.database, sql)
+    });
   }
 
 
