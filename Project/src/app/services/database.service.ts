@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { HttpClient } from '@angular/common/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 @Injectable({
@@ -24,13 +26,27 @@ constructor(private sqlite: SQLite)
 
 constructor(private db: SQLiteObject)
   {
-        this.database.create
+        this.db.create
       ({
         name: 'database.db',
         location: 'default'
       })
   }
   */
+
+  constructor( private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
+  {
+
+      this.sqlite.create({
+        name: 'mydb.db',
+        location: 'default'
+      })
+      .then((db: SQLiteObject) => {
+          this.database = db;
+          //this.seedDatabase();
+      });
+
+  }
 
 
   addAppoint(idapp, title, description, place, timeapp, profileId )
