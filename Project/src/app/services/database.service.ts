@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,8 @@ constructor()
 
   selectAppoint(id,profileId)
     {
-      return this.database.executeSql('SELECT title FROM appointment,profile  WHERE idapp=?, profileId=?', [idapp,profileId])
+      return this.database.executeSql('SELECT title FROM appointment profileId=?', [profileId])
+      //return this.database.executeSql('SELECT title FROM appointment,profile  WHERE idapp=?, profileId=?', [idapp,profileId])
       let title = [];
     }
 
