@@ -4,9 +4,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DatabaseService {
+  private database: SQLiteObject;
 
-  constructor() { }
+constructor()
+{
 
+}
+/*
+  constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
+  {
+    this.plt.ready().then(() => {
+      this.sqlite.create({
+        name: 'database.db',
+        location: 'default'
+      })
+      .then((db: SQLiteObject) => {
+          this.database = db;
+          this.seedDatabase();
+      });
+    });
+  }
+*/
   addAppoint(idapp, title, description, place, timeapp, profileId )
     {
      let data = [idapp, title, description, place, timeapp, profileId ];
