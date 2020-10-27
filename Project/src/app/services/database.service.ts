@@ -7,25 +7,32 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 export class DatabaseService {
   private database: SQLiteObject;
 
+/*
 constructor()
 {
 
 }
-/*
-  constructor(private plt: Platform, private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
+constructor(private sqlite: SQLite)
   {
-    this.plt.ready().then(() => {
-      this.sqlite.create({
+        this.sqlite.create
+      ({
         name: 'database.db',
         location: 'default'
       })
-      .then((db: SQLiteObject) => {
-          this.database = db;
-          this.seedDatabase();
-      });
-    });
   }
-*/
+
+
+constructor(private db: SQLiteObject)
+  {
+        this.database.create
+      ({
+        name: 'database.db',
+        location: 'default'
+      })
+  }
+  */
+
+
   addAppoint(idapp, title, description, place, timeapp, profileId )
     {
      let data = [idapp, title, description, place, timeapp, profileId ];
@@ -41,7 +48,7 @@ constructor()
   selectAppoint(id,profileId)
     {
       return this.database.executeSql('SELECT title FROM appointment profileId=?', [profileId])
-      //return this.database.executeSql('SELECT title FROM appointment,profile  WHERE idapp=?, profileId=?', [idapp,profileId])
+      //return this.database.executeSql('SELECT title FROM appointment,profile  WHERE idapp=?, profileId=?', [idapp,profileId]) //da rifare
       let title = [];
     }
 
