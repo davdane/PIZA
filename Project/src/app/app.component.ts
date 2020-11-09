@@ -3,6 +3,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { StorageService, Item } from '../app/servic/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,18 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 })
 export class AppComponent {
 
-    profiles : Array <string> = []
+  items: Item[]=[];
+  newItem: Item=<Item>{};
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private sqlite: SQLite,
+    private storageService: StorageService
   ) {
     this.initializeApp();
-    this.profiles=[]
+
   }
 
   initializeApp()
@@ -29,6 +32,7 @@ export class AppComponent {
     {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.loadItems();
 /*
       this.sqlite.create           //funzione default ionic Framework
       ({
@@ -43,6 +47,11 @@ export class AppComponent {
      }).catch(e => console.log(e));
   */
 })/*.catch(e => console.log(e))*/;
+   }
+   loadItems(){
+     this.storageService.getItems().then(items => {
+       this.items=items;
+     });
    }
  }
 /*

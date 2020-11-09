@@ -10,32 +10,32 @@
 
           <ion-item>
             <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input type="text" placeholder="Insert Name" ng-model="addProfile.name"></ion-input>
+            <ion-input type="text" placeholder="Insert Name" [(ngModel)]="newItem.name"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Surname</ion-label>
-            <ion-input type="text" placeholder="Insert Surname" ng-model="addProfile.surname"></ion-input>
+            <ion-input type="text" placeholder="Insert Surname" [(ngModel)]="newItem.surname"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Age</ion-label>
-            <ion-input type="text" placeholder="Insert Age"></ion-input>
+            <ion-input type="text" placeholder="Insert Age" [(ngModel)]="newItem.age"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Height</ion-label>
-            <ion-input type="text" placeholder="Insert Height"></ion-input>
+            <ion-input type="text" placeholder="Insert Height" [(ngModel)]="newItem.height"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">Weight</ion-label>
-            <ion-input type="text" placeholder="Insert Weight"></ion-input>
+            <ion-input type="text" placeholder="Insert Weight" [(ngModel)]="newItem.weight"></ion-input>
           </ion-item>
 
         </ion-list>
 
-        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addProfile()">
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addItem()" [routerLink]="['/home']">
           Create profile
         </ion-button>
 

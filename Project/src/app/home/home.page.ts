@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { StorageService, Item } from '../servic/storage.service';
+import { Platform } from "@ionic/angular";
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  profiles : Array <string> = []
+items: Item[]=[];
+newItem: Item=<Item>{};
 
-  constructor() {
-    this.profiles=[]
+  constructor(private storageService: StorageService, private plt: Platform) {
+    this.plt.ready().then(() => {
+      this.loadItems();
+    });
+  }
+  //READ
+  loadItems(){
+    this.storageService.getItems().then(items => {
+      this.items=items;
+    });
   }
 
 }

@@ -9,7 +9,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 export class DatabaseService {
   private database: SQLiteObject;
 
-constructor( private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient)
+constructor( private sqlitePorter: SQLitePorter, private sqlite: SQLite, private http: HttpClient, private storage: Storage)
   {
 
       this.sqlite.create({

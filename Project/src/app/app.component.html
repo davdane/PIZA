@@ -4,8 +4,8 @@
           <ion-list>
             <ion-menu-toggle>
               <!-- Quando viene aggiunto un profilo, viene inserito qui -->
-              <ion-item *ngFor="let item of profiles">
-                {{item}}
+              <ion-item *ngFor="let item of items">
+                {{item.name}} {{item.surname}}
               </ion-item>
               <ion-item [routerLink]="['/add-profile']">
                 <ion-icon name="add-circle-outline" slot="start"></ion-icon>
