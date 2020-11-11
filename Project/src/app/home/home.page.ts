@@ -14,12 +14,12 @@ newItem: Item=<Item>{};
 
   constructor(private storageService: StorageService, private plt: Platform) {
     this.plt.ready().then(() => {
-      this.loadItems();
+      this.loadProfiles();
     });
   }
   //READ
-  loadItems(){
-    this.storageService.getItems().then(items => {
+  loadProfiles(){
+    this.storageService.getProfiles().then(items => {
       this.items=items;
     });
   }

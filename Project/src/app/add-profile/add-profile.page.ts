@@ -18,37 +18,37 @@ export class AddProfilePage implements OnInit {
   constructor(private storageService: StorageService, private plt: Platform) {
     /*this.profiles=[]*/
     this.plt.ready().then(() => {
-      this.loadItems();
+      this.loadProfiles();
     });
   }
   //CREATE
-  addItem() {
+  addProfile() {
     this.newItem.id = Date.now();
 
-    this.storageService.addItem(this.newItem).then(item => {
+    this.storageService.addProfile(this.newItem).then(item => {
       this.newItem=<Item>{};
-      this.loadItems();
-      alert("Item added!")
+      this.loadProfiles();
+      alert("Profile added!")
     });
   }
   //READ
-  loadItems(){
-    this.storageService.getItems().then(items => {
+  loadProfiles(){
+    this.storageService.getProfiles().then(items => {
       this.items=items;
     });
   }
   //UPDATE
-  updateItem(item: Item) {
-    item.name='${Item.name}';
+  updateProfile(item: Item) {
+    item.name='${Profile.name}';
 
-    this.storageService.updateItem(item).then(items => {
-      this.loadItems();
+    this.storageService.updateProfile(item).then(items => {
+      this.loadProfiles();
     });
   }
   //DELETE
-  deleteItem(item: Item) {
-    this.storageService.deleteItem(item.id).then(items => {
-      this.loadItems();
+  deleteProfile(item: Item) {
+    this.storageService.deleteProfile(item.id).then(items => {
+      this.loadProfiles();
     });
   }
 

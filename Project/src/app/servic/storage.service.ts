@@ -10,7 +10,7 @@ export interface Item{
   weight: number
 }
 
-const ITEMS_KEY = "my-profiles"
+const PROFILES_KEY = "my-profiles"
 
 @Injectable({
   providedIn: 'root'
@@ -19,52 +19,52 @@ export class StorageService {
 
   constructor(private storage: Storage) { }
 
-addItem(item: Item): Promise<any>{
-  return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
+addProfile(item: Item): Promise<any>{
+  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
     if (items) {
       items.push(item);
-      return this.storage.set(ITEMS_KEY, items);
+      return this.storage.set(PROFILES_KEY, items);
     } else {
-      return this.storage.set(ITEMS_KEY, [item])
+      return this.storage.set(PROFILES_KEY, [item])
     }
   });
 }
 
-getItems(): Promise<any>{
-  return this.storage.get(ITEMS_KEY);
+getProfiles(): Promise<any>{
+  return this.storage.get(PROFILES_KEY);
 }
 
-updateItem(item: Item): Promise<any>{
-  return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
+updateProfile(item: Item): Promise<any>{
+  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
     if (!items || items.length===0) {
       return null;
     }
     let newItem: Item[]= [];
 
     for (let i of items){
-      if (i.id === item.id){
+      if (i.id === Item.id){
         newItem.push(item);
       } else {
         newItem.push(i);
       }
     }
-    return this.storage.set(ITEMS_KEY, newItem);
+    return this.storage.set(PROFILES_KEY, newItem);
   });
 }
 
-deleteItem(id: number): Promise<Item> {
-  return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
+deleteProfile(id: number): Promise<Item> {
+  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
     if (!items || items.length===0) {
       return null;
     }
     let toKeep: Item[]= [];
 
     for (let i of items){
-      if (i.id !== item.id){
+      if (i.id !== Item.id){
         toKeep.push(i);
       }
     }
-    return this.storage.set(ITEMS_KEY, toKeep);
+    return this.storage.set(PROFILES_KEY, toKeep);
   });
 }
 }

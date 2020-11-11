@@ -32,7 +32,7 @@ export class AppComponent {
     {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.loadItems();
+      this.loadProfiles();
 /*
       this.sqlite.create           //funzione default ionic Framework
       ({
@@ -48,8 +48,8 @@ export class AppComponent {
   */
 })/*.catch(e => console.log(e))*/;
    }
-   loadItems(){
-     this.storageService.getItems().then(items => {
+   loadProfiles(){
+     this.storageService.getProfiles().then(items => {
        this.items=items;
      });
    }
