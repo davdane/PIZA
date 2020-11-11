@@ -10,9 +10,9 @@ import { Platform } from "@ionic/angular";
 export class AddProfilePage implements OnInit {
 
   /*profiles : Array <string> = []*/
-  items: Profile[]=[];
 
-  newItem: Profile=<Profile>{};
+  profiles: Profile[]=[];
+  newProfile: Profile=<Profile>{};
 
 
   constructor(private storageService: StorageService, private plt: Platform) {
@@ -23,10 +23,10 @@ export class AddProfilePage implements OnInit {
   }
   //CREATE
   addProfile() {
-    this.newItem.id = Date.now();
+    this.newProfile.id = Date.now();
 
-    this.storageService.addProfile(this.newItem).then(item => {
-      this.newItem=<Profile>{};
+    this.storageService.addProfile(this.newProfile).then(item => {
+      this.newProfile=<Profile>{};
       this.loadProfiles();
       alert("Profile added!")
     });
@@ -34,7 +34,7 @@ export class AddProfilePage implements OnInit {
   //READ
   loadProfiles(){
     this.storageService.getProfiles().then(items => {
-      this.items=items;
+      this.profiles=items;
     });
   }
   //UPDATE

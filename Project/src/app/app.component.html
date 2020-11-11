@@ -4,9 +4,9 @@
           <ion-list>
             <ion-menu-toggle>
               <!-- Quando viene aggiunto un profilo, viene inserito qui -->
-              <ion-item *ngFor="let item of items">
+              <ion-item *ngFor="let item of profiles">
                 <ion-avatar slot="start"><!-- Immagine del profilo --></ion-avatar>
-                
+
                 <ion-button (click)="updateProfile(item)" slot="end">
                   <ion-icon name="pencil"></ion-icon>
                 </ion-button>

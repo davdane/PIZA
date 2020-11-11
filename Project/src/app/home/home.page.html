@@ -4,7 +4,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="new" *ngIf="!items || items.length===0" else #conditionFalse >
+<ng-template #false>
+  <div id="new">
     <strong>Are you a new user?</strong>
     <p id="start">Start by adding a new profile!</p>
   <p>
@@ -15,21 +16,23 @@
     </ion-fab>
   </p>
   </div>
+</ng-template>
 
-  <div>
-  <ion-list *ngFor="let item of items" #conditionFalse>
+  <div *ngIf="profiles && profiles.length!==0 else false">
+  <ion-list>
     <ion-list-header>
     <strong>Upcoming appointments:</strong>
     </ion-list-header>
 
-        <ion-item>
+        <ion-item *ngFor="let item of appointments">
           <ion-avatar slot="start">
             <img src="./assets/icon/favicon.png">
           </ion-avatar>
           <ion-label>
-            <h2>12/12/20</h2>
-            <h3>Vaccino</h3>
-            <p>Antitetanica</p>
+            <h2>{{item.profile}}</h2>
+            <h2>{{item.date}}</h2>
+            <h3>{{item.title}}</h3>
+            <p>{{item.description}}</p>
           </ion-label>
         </ion-item>
 
