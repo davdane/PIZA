@@ -3,7 +3,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { StorageService, Item } from '../app/servic/storage.service';
+import { StorageService, Profile } from '../app/servic/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,8 @@ import { StorageService, Item } from '../app/servic/storage.service';
 })
 export class AppComponent {
 
-  items: Item[]=[];
-  newItem: Item=<Item>{};
+  items: Profile[]=[];
+  newItem: Profile=<Profile>{};
 
   constructor(
     private platform: Platform,
@@ -51,6 +51,21 @@ export class AppComponent {
    loadProfiles(){
      this.storageService.getProfiles().then(items => {
        this.items=items;
+     });
+   }
+   //UPDATE
+   updateProfile(item: Profile) {
+     item.name='${item.name}';
+
+     this.storageService.updateProfile(item).then(items => {
+       this.loadProfiles();
+     });
+   }
+   //DELETE
+   deleteProfile(item: Profile) {
+     this.storageService.deleteProfile(item.id).then(items => {
+       this.loadProfiles();
+       alert("Profile deleted!")
      });
    }
  }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StorageService, Item } from '../servic/storage.service';
+import { StorageService, Profile } from '../servic/storage.service';
 import { Platform } from "@ionic/angular";
 
 @Component({
@@ -10,9 +10,9 @@ import { Platform } from "@ionic/angular";
 export class AddProfilePage implements OnInit {
 
   /*profiles : Array <string> = []*/
-  items: Item[]=[];
+  items: Profile[]=[];
 
-  newItem: Item=<Item>{};
+  newItem: Profile=<Profile>{};
 
 
   constructor(private storageService: StorageService, private plt: Platform) {
@@ -26,7 +26,7 @@ export class AddProfilePage implements OnInit {
     this.newItem.id = Date.now();
 
     this.storageService.addProfile(this.newItem).then(item => {
-      this.newItem=<Item>{};
+      this.newItem=<Profile>{};
       this.loadProfiles();
       alert("Profile added!")
     });
@@ -38,7 +38,7 @@ export class AddProfilePage implements OnInit {
     });
   }
   //UPDATE
-  updateProfile(item: Item) {
+  updateProfile(item: Profile) {
     item.name='${Profile.name}';
 
     this.storageService.updateProfile(item).then(items => {
@@ -46,9 +46,10 @@ export class AddProfilePage implements OnInit {
     });
   }
   //DELETE
-  deleteProfile(item: Item) {
-    this.storageService.deleteProfile(item.id).then(items => {
+  deleteProfile(item) {
+    this.storageService.deleteProfile(item).then(items => {
       this.loadProfiles();
+      alert("Profile deleted!");
     });
   }
 

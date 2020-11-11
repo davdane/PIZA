@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
 
-export interface Item{
+export interface Profile{
   id: number,
   name: string,
   surname: string,
@@ -19,8 +19,8 @@ export class StorageService {
 
   constructor(private storage: Storage) { }
 
-addProfile(item: Item): Promise<any>{
-  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
+addProfile(item: Profile): Promise<any>{
+  return this.storage.get(PROFILES_KEY).then((items: Profile[]) => {
     if (items) {
       items.push(item);
       return this.storage.set(PROFILES_KEY, items);
@@ -30,37 +30,37 @@ addProfile(item: Item): Promise<any>{
   });
 }
 
-getProfiles(): Promise<any>{
+getProfiles(): Promise<Profile[]>{
   return this.storage.get(PROFILES_KEY);
 }
 
-updateProfile(item: Item): Promise<any>{
-  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
+updateProfile(item: Profile): Promise<any>{
+  return this.storage.get(PROFILES_KEY).then((items: Profile[]) => {
     if (!items || items.length===0) {
       return null;
     }
-    let newItem: Item[]= [];
+    let newProfiles: Profile[]= [];
 
     for (let i of items){
-      if (i.id === Item.id){
-        newItem.push(item);
+      if (i.id === item.id){
+        newProfiles.push(item);
       } else {
-        newItem.push(i);
+        newProfiles.push(i);
       }
     }
-    return this.storage.set(PROFILES_KEY, newItem);
+    return this.storage.set(PROFILES_KEY, newProfiles);
   });
 }
 
-deleteProfile(id: number): Promise<Item> {
-  return this.storage.get(PROFILES_KEY).then((items: Item[]) => {
+deleteProfile(id: number): Promise<Profile> {
+  return this.storage.get(PROFILES_KEY).then((items: Profile[]) => {
     if (!items || items.length===0) {
       return null;
     }
-    let toKeep: Item[]= [];
+    let toKeep: Profile[]= [];
 
     for (let i of items){
-      if (i.id !== Item.id){
+      if (i.id !== id){
         toKeep.push(i);
       }
     }
