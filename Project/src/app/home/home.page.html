@@ -4,8 +4,7 @@
     </ion-toolbar>
   </ion-header>
 
-<ng-template #false>
-  <div id="new">
+  <div id="new"  *ngIf="!profiles || profiles.length===0 else conditionFalse">
     <strong>Are you a new user?</strong>
     <p id="start">Start by adding a new profile!</p>
   <p>
@@ -16,9 +15,9 @@
     </ion-fab>
   </p>
   </div>
-</ng-template>
 
-  <div *ngIf="profiles && profiles.length!==0 else false">
+<ng-template #conditionFalse>
+  <div>
   <ion-list>
     <ion-list-header>
     <strong>Upcoming appointments:</strong>
@@ -48,4 +47,5 @@
 
   </ion-list>
   </div>
+</ng-template>
 </ion-content>
