@@ -32,7 +32,7 @@ export class AddAppointPage implements OnInit {
     this.newAppointment.id = Date.now();
     this.storageService.addAppointment(this.newAppointment).then(item => {
       this.newAppointment=<Appointment>{};
-      this.loadAppointments();
+      this.doRefresh(event);
     });
   }
   //READ
@@ -65,5 +65,17 @@ export class AddAppointPage implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  doRefresh(event) {
+    this.loadAppointments();
+
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+
   }
 }

@@ -73,9 +73,19 @@ export class AppComponent {
    //DELETE
    deleteProfile(item: Profile) {
      this.storageService.deleteProfile(item.id).then(items => {
-       this.loadProfiles();
-       alert("Profile deleted!")
+       this.doRefresh();
      });
+   }
+
+   doRefresh() {
+     this.loadProfiles();
+
+     console.log('Reloading...');
+
+     setTimeout(() => {
+       console.log('Reloading complete!');
+     }, 1000);
+
    }
  }
 /*

@@ -33,4 +33,25 @@ newAppointment: Appointment=<Appointment>{};
       this.appointments=items;
     });
   }
+
+  deleteAppointment(item: Appointment) {
+    this.storageService.deleteAppointment(item.id).then(items => {
+      this.loadAppointments();
+      alert("Appointment deleted!");
+    });
+  }
+
+  doRefresh(event) {
+    this.loadAppointments();
+    this.loadProfiles();
+
+    console.log('Reloading...');
+
+    setTimeout(() => {
+      console.log('Reloading complete!');
+      event.target.complete();
+    }, 1000);
+
+  }
+
 }
