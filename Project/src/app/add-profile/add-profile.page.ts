@@ -53,7 +53,7 @@ export class AddProfilePage implements OnInit {
     });
   }
 
-  async presentToast() {
+  async ToastProfile() {
     const toast = await this.toastController.create({
       message: 'Profile added!',
       duration: 2000

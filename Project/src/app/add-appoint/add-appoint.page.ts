@@ -33,7 +33,6 @@ export class AddAppointPage implements OnInit {
     this.storageService.addAppointment(this.newAppointment).then(item => {
       this.newAppointment=<Appointment>{};
       this.loadAppointments();
-      alert("Appointment added!")
     });
   }
   //READ
@@ -60,4 +59,11 @@ export class AddAppointPage implements OnInit {
   ngOnInit() {
   }
 
+  async ToastAppointment() {
+    const toast = await this.toastController.create({
+      message: 'Appointment added!',
+      duration: 2000
+    });
+    toast.present();
+  }
 }

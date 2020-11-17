@@ -42,6 +42,6 @@
 
         </ion-list>
 
-        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addAppointment()" [routerLink]="['/home']">Add Appointment</ion-button>
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addAppointment()" (click)="ToastAppointment()" [routerLink]="['/home']">Add Appointment</ion-button>
         <ion-button expand="block" type="submit" class="ion-no-margin" size="small" fill="clear">Cancel</ion-button>
      </ion-content>
