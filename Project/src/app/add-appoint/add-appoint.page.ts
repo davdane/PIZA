@@ -32,7 +32,7 @@ export class AddAppointPage implements OnInit {
     this.newAppointment.id = Date.now();
     this.storageService.addAppointment(this.newAppointment).then(item => {
       this.newAppointment=<Appointment>{};
-      this.doRefresh(event);
+      this.loadAppointments();
     });
   }
   //READ
