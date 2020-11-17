@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService, Profile } from '../servic/storage.service';
 import { Platform } from "@ionic/angular";
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-profile',
@@ -15,7 +16,7 @@ export class AddProfilePage implements OnInit {
   newProfile: Profile=<Profile>{};
 
 
-  constructor(private storageService: StorageService, private plt: Platform) {
+  constructor(private storageService: StorageService, private plt: Platform, public toastController: ToastController) {
     /*this.profiles=[]*/
     this.plt.ready().then(() => {
       this.loadProfiles();
@@ -28,7 +29,6 @@ export class AddProfilePage implements OnInit {
     this.storageService.addProfile(this.newProfile).then(item => {
       this.newProfile=<Profile>{};
       this.loadProfiles();
-      alert("Profile added!")
     });
   }
   //READ
@@ -53,6 +53,13 @@ export class AddProfilePage implements OnInit {
     });
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Profile added!',
+      duration: 2000
+    });
+    toast.present();
+  }
   /*
   addProfile (){
     alert("Profile added!")

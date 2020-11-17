@@ -35,7 +35,7 @@
 
         </ion-list>
 
-        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addProfile()" [routerLink]="['/home']">
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="addProfile()" (click)="presentToast()" [routerLink]="['/home']">
           Create profile
         </ion-button>
 

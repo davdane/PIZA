@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService, Appointment, Profile } from '../servic/storage.service';
 import { Platform } from "@ionic/angular";
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-appoint',
@@ -14,7 +15,7 @@ export class AddAppointPage implements OnInit {
   appointments: Appointment[]=[];
   newAppointment: Appointment=<Appointment>{};
 
-  constructor(private storageService: StorageService, private plt: Platform) {
+  constructor(private storageService: StorageService, private plt: Platform, public toastController: ToastController) {
     this.plt.ready().then(() => {
       this.loadAppointments();
       this.loadProfiles();
