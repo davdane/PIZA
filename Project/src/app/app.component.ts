@@ -77,6 +77,12 @@ export class AppComponent {
      });
    }
 
+   deleteAppointment(item: Appointment) {
+     this.storageService.deleteAppointment(item.id).then(items => {
+       this.loadAppointments();
+     });
+   }
+   
    doRefresh() {
      this.loadProfiles();
 
