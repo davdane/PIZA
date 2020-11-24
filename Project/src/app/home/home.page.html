@@ -31,7 +31,7 @@
     </ion-list-header>
       <ion-item-sliding *ngFor="let item of appointments">
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="deleteAppointment(item)">DELETE</ion-item-option>
+          <ion-item-option color="danger" (click)="presentAlertConfirm(item)">DELETE</ion-item-option>
         </ion-item-options>
 
         <ion-item>

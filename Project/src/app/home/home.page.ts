@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService, Profile, Appointment } from '../servic/storage.service';
 import { Platform } from "@ionic/angular";
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ newProfiles: Profile=<Profile>{};
 appointments: Appointment[]=[];
 newAppointment: Appointment=<Appointment>{};
 
-  constructor(private storageService: StorageService, private plt: Platform) {
+  constructor(private storageService: StorageService, private plt: Platform, public alertController: AlertController) {
     this.plt.ready().then(() => {
       this.loadProfiles();
       this.loadAppointments();
@@ -37,7 +38,6 @@ newAppointment: Appointment=<Appointment>{};
   deleteAppointment(item: Appointment) {
     this.storageService.deleteAppointment(item.id).then(items => {
       this.loadAppointments();
-      alert("Appointment deleted!");
     });
   }
 
@@ -53,5 +53,30 @@ newAppointment: Appointment=<Appointment>{};
     }, 1000);
 
   }
+
+  async presentAlertConfirm(item: Appointment) {
+      const alert = await this.alertController.create({
+        header: 'You are deleting this appointment',
+        message: 'Are you sure you want to delete this appointment?',
+        buttons: [
+          {
+            text: 'Yes',
+            role: 'Delete',
+            handler: () => {
+              this.deleteAppointment(item);
+              console.log('Appointment deleted!');
+            }
+          }, {
+            text: 'No',
+            handler: () => {
+              console.log('Cancel');
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    }
+
 
 }
