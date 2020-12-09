@@ -5,14 +5,16 @@
 </ion-header>
 
 <ion-content>
+  <form [FormGroup]="form" (submit)="onSubmit()">
   <ion-item>
-    <ion-label>Username</ion-label>
-    <ion-input type="text"  name="username"></ion-input>
+    <ion-label>Email</ion-label>
+    <ion-input type="text" required formControlName="email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Password</ion-label>
-    <ion-input type="password" name="password"></ion-input>
+    <ion-input type="password" required formControlName="password"></ion-input>
   </ion-item>
-  <ion-button type="submit">Sign in</ion-button>
+  <ion-button type="submit" [disabled]="form.invalid">Register</ion-button>
   <ion-button expand="block" type="submit" class="ion-no-margin" size="small" fill="clear" [routerLink]="['/login']">Back to login page</ion-button>
+  </form>
 </ion-content>

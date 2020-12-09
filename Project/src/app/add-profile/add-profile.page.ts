@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService, Profile } from '../servic/storage.service';
 import { Platform } from "@ionic/angular";
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-profile',
@@ -16,7 +16,7 @@ export class AddProfilePage implements OnInit {
   newProfile: Profile=<Profile>{};
 
 
-  constructor(private storageService: StorageService, private plt: Platform, public toastController: ToastController) {
+  constructor(private storageService: StorageService, private plt: Platform, public toastController: ToastController, public navCtrl: NavController) {
     /*this.profiles=[]*/
     this.plt.ready().then(() => {
       this.loadProfiles();
@@ -28,8 +28,9 @@ export class AddProfilePage implements OnInit {
 
     this.storageService.addProfile(this.newProfile).then(item => {
       this.newProfile=<Profile>{};
+      this.navCtrl.navigateRoot("/home");
       this.loadProfiles();
-    });
+      });
   }
   //READ
   loadProfiles(){
