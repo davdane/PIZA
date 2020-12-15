@@ -1,27 +1,20 @@
-<ion-content [fullscreen]="true">
-  <ion-header translucent>
-    <ion-toolbar>
-      <ion-title>Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<!-- form (ngSubmit)="sign()"-->
-     <ion-item>
-       <ion-label>Username</ion-label>
-       <ion-input type="text" name="username"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label>Password</ion-label>
-       <ion-input type="password" name="password"></ion-input>
-     </ion-item>
-     <ion-button type="submit" [routerLink]="['/home']">Login</ion-button>
-   <!--/form-->
-   <ion-item class="ion-no-border" align-items-center>
-     <ion-title>Login with: </ion-title>
-   </ion-item>
-<ion-item class="ion-no-border" align-items-center>
-       <ion-button size="large"><ion-icon name="logo-google"></ion-icon></ion-button>
-       <ion-button size="large"><ion-icon name="logo-facebook"></ion-icon></ion-button>
- </ion-item>
-   <ion-button expand="block" type="submit" class="ion-no-margin" size="small" fill="clear" [routerLink]="['/register']">New user? Register here!</ion-button>
+<ion-content>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" required formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" required formControlName="password"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="form.invalid">Login</ion-button>
+    <ion-button expand="block" class="ion-no-margin" size="small" fill="clear" [routerLink]="['/register']">New user? Register here!</ion-button>
+  </form>
 </ion-content>
