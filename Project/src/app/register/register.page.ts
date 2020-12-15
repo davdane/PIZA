@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { AlertController, ToastController, LoadingController } from '@ionic/angular';
+import { AlertController, ToastController, LoadingController, NavController } from '@ionic/angular';
 
 
 imports: [
@@ -19,7 +19,8 @@ export class RegisterPage {
     private authService: AuthService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private navCtrl: NavController
   ) { }
 
   form = new FormGroup({
@@ -45,6 +46,7 @@ export class RegisterPage {
         await toast.present();
         loading.dismiss();
         this.form.reset();
+        this.navCtrl.navigateRoot("/login");
       },
       // If there is an error
       async () => {

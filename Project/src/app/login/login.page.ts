@@ -37,21 +37,19 @@ export class LoginPage {
   });
 
   async onSubmit() {
-    const loading = await this.loadingCtrl.create({ message: 'Logging in...' });
+    const loading = await this.loadingCtrl.create({ message: 'Logging in ...' });
     await loading.present();
-    this.authService.register(this.form.value).subscribe(
-      // If success
-      async () => {
-        const toast = await this.toastCtrl.create({ message: 'Succesful login!', duration: 2000, color: 'dark' });
-        await toast.present();
+
+    this.authService.login(this.form.value).subscribe(
+      async token => {
+        localStorage.setItem('token', token);
         loading.dismiss();
         this.navCtrl.navigateRoot("/home");
       },
-      // If there is an error
       async () => {
-        const alert = await this.alertCtrl.create({ message: 'Login Failed!', buttons: ['OK'] });
-        loading.dismiss();
+        const alert = await this.alertCtrl.create({ message: 'Login Failed', buttons: ['OK'] });
         await alert.present();
+        loading.dismiss();
       }
     );
   }
