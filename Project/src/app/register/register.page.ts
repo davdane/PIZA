@@ -24,14 +24,14 @@ export class RegisterPage {
 
   form = new FormGroup({
 
-    email: new FormControl('', [
-        Validators.compose ([Validators.maxLength (70),
-        Validators.pattern ('^ [ A-Za-z0-9 - \ +] + (\. [ A-Za-z0-9 -] +) * @ [A-Za-z0-9 -] + (\. [A-Za-z0-9] +) * (\. [A-Za-z] {2,}) $ '),
-        Validators.required])
-    ]),
+    email: new FormControl('', Validators.compose
+    ([Validators.maxLength (70),
+      Validators.pattern ("[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"),
+      Validators.required
+    ])),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(6),
     ]),
   });
 
