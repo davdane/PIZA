@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [FormGroup]="form" (submit)="onSubmit()">
+  <form [formGroup]="form" (submit)="onSubmit()">
   <ion-item>
     <ion-label>Email</ion-label>
     <ion-input type="text" required formControlName="email"></ion-input>

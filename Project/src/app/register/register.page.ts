@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 
+
+imports: [
+        FormsModule,
+        ReactiveFormsModule
+]
 
 @Component({
   selector: 'app-register',
