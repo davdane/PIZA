@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost/provaAPI/api';
+  private url = 'http://localhost/PROGRAMMI/provaAPI/api';                                 //da modificare in base al path (cartella htdocs XAMPP)
   constructor(private http: HttpClient) { }
 
   register(user: User) {
