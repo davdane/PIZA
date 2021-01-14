@@ -19,7 +19,7 @@ export class AddProfilePage implements OnInit {
   profiles: Profiles;
 
   constructor(
-    private AuthService: AuthService,
+    private authService: AuthService,
     private plt: Platform,
     public toastController: ToastController,
     public navCtrl: NavController,
@@ -59,7 +59,7 @@ export class AddProfilePage implements OnInit {
     const loading = await this.loadingCtrl.create({ message: 'Adding profile...' });
     await loading.present();
 
-    this.AuthService.createProfile(this.form.value).subscribe(
+    this.authService.createProfile(this.form.value).subscribe(
       async () => {
         const toast = await this.toastController.create({ message: 'Profile created!', duration: 2000, color: 'dark' });
         await toast.present();
