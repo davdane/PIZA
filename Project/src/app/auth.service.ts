@@ -1,4 +1,5 @@
 import { User } from './user.model';
+import { Profiles } from './profiles.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -20,4 +21,26 @@ export class AuthService {
       map(response => response.token)
     );
   }
+  
+
+  getAllProfiles() {
+    return this.http.get<[Profiles]>(`${this.url}/profili`);
+  }
+
+  getProfile(id_profiles: Profiles) {
+    return this.http.get<Profiles>(`${this.url}/profili` + "/" + id_profiles);
+  }
+
+  createProfile(profile: Profiles){
+    return this.http.post(`${this.url}/profili`, profile);
+  }
+
+  updateProfile(profile: Profiles, id_profiles: string){
+    return this.http.put(`${this.url}/profili` + "/" + id_profiles, profile);
+  }
+
+  deleteProfile(id_profiles: string){
+    return this.http.delete(`${this.url}/profili` + "/" + id_profiles);
+  }
 }
+

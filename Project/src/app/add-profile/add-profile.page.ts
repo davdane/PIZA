@@ -1,7 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { StorageService, Profile } from '../servic/storage.service';
+import { Component, OnInit, ViewChild } from '@angular/core';;
 import { Platform } from "@ionic/angular";
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, ModalController, LoadingController } from '@ionic/angular';
+import { Profiles } from '../profiles.model';
+import { AuthService } from '../auth.service';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
+
+imports: [
+  FormsModule,
+  ReactiveFormsModule
+]
 
 @Component({
   selector: 'app-add-profile',
@@ -9,64 +16,68 @@ import { ToastController, NavController } from '@ionic/angular';
   styleUrls: ['./add-profile.page.scss'],
 })
 export class AddProfilePage implements OnInit {
+  profiles: Profiles;
 
-  /*profiles : Array <string> = []*/
-
-  profiles: Profile[]=[];
-  newProfile: Profile=<Profile>{};
-
-
-  constructor(private storageService: StorageService, private plt: Platform, public toastController: ToastController, public navCtrl: NavController) {
-    /*this.profiles=[]*/
-    this.plt.ready().then(() => {
-      this.loadProfiles();
-    });
+  constructor(
+    private AuthService: AuthService,
+    private plt: Platform,
+    public toastController: ToastController,
+    public navCtrl: NavController,
+    public ModalCtrl: ModalController,
+    public loadingCtrl: LoadingController
+    ) {
+    
   }
+
+  form = new FormGroup({
+
+    name: new FormControl('', Validators.required)
+
+  });
   //CREATE
   addProfile() {
-    this.newProfile.id = Date.now();
-
-    this.storageService.addProfile(this.newProfile).then(item => {
-      this.newProfile=<Profile>{};
-      this.navCtrl.navigateRoot("/home");
-      this.loadProfiles();
-      });
+    this.ModalCtrl.create({
+      component: AddProfilePage
+    }).then(modal=>modal.present());
   }
   //READ
   loadProfiles(){
-    this.storageService.getProfiles().then(items => {
-      this.profiles=items;
-    });
-  }
+
+    };
+  
   //UPDATE
-  updateProfile(item: Profile) {
-    item.name='${Profile.name}';
-
-    this.storageService.updateProfile(item).then(items => {
-      this.loadProfiles();
-    });
-  }
+  updateProfile() {
+    
+    };
+  
   //DELETE
-  deleteProfile(item) {
-    this.storageService.deleteProfile(item).then(items => {
-      this.loadProfiles();
-      alert("Profile deleted!");
-    });
+  deleteProfile(id_profiles: string) {
+    
+    };
+  
+  async onSubmit(){
+    const loading = await this.loadingCtrl.create({ message: 'Adding profile...' });
+    await loading.present();
+
+    this.AuthService.createProfile(this.form.value).subscribe(
+      async () => {
+        const toast = await this.toastController.create({ message: 'Profile created!', duration: 2000, color: 'dark' });
+        await toast.present();
+        loading.dismiss();
+        this.form.reset();
+        this.navCtrl.navigateRoot("/home");
+      },
+      async () => {
+        const alert = await this.toastController.create({ message: 'There is an error', buttons: ['OK'] });
+        loading.dismiss();
+        await alert.present();
+      }
+    )
   }
 
-  async ToastProfile() {
-    const toast = await this.toastController.create({
-      message: 'Profile added!',
-      duration: 2000
-    });
-    toast.present();
-  }
-  /*
-  addProfile (){
-    alert("Profile added!")
-    this.profiles.push('')
-  }*/
   ngOnInit() {
-  }
+
+    }
+  
 
 }

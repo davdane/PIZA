@@ -4,7 +4,7 @@
        <ion-buttons slot="start">
          <ion-menu-button></ion-menu-button>
        </ion-buttons>
-       <ion-title>Medical Reminder</ion-title>
+       <ion-title class="ion-text-center">Medical Reminder</ion-title>
      </ion-toolbar>
    </ion-header>
 
@@ -18,7 +18,7 @@
   <ion-menu side= "start" content-id="menu" name="Menu">
     <ion-content>
           <ion-list>
-            <ion-menu-toggle>
+            
               <!-- Quando viene aggiunto un profilo, viene inserito qui -->
               <ion-item *ngFor="let item of profiles">
                 <ion-avatar slot="start"><!-- Immagine del profilo --></ion-avatar>
@@ -37,7 +37,7 @@
                 <ion-icon name="add-circle-outline" slot="start"></ion-icon>
                 <ion-label>Add new profile</ion-label>
               </ion-item>
-            </ion-menu-toggle>
+            
           </ion-list>
     </ion-content>
    <ion-footer>
